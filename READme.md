@@ -47,8 +47,21 @@ run the following commands in backend folder
 ```
 cd backend
 pnpm install
+pnpm seed
 pnpm dev
 ```
+
+### For Admin Dashboard use
+
+  Name: Admin User
+  Email: admin@example.com
+  Password: admin123
+
+  or you can use the seed.js file to create other admin users
+  or you can update role in database , or further we can make it role add/update in frontend
+
+
+
 
 ### Frontend
 

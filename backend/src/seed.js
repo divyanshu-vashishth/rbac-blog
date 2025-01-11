@@ -17,7 +17,7 @@ const seedDatabase = async () => {
       .from('users')
       .insert([
         {
-          name: 'Admin User',
+          name: 'Admin',
           email: 'admin@example.com',
           password: hashedPassword,
           role: 'admin'
