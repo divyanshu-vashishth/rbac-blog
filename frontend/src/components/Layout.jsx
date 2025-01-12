@@ -5,7 +5,10 @@ export default function Layout() {
   const { user, logout } = useAuth();
   // console.log(user[0].name);
   const location = useLocation();
-
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
   return (
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-white shadow-lg">
@@ -28,7 +31,7 @@ export default function Layout() {
                 >
                   Home
                 </Link>
-                {user && (  
+                {user.length > 0 && (  
                   <Link
                     to="/blogs"
                     className={`${
@@ -55,11 +58,11 @@ export default function Layout() {
               </div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
-              {user ? (
+            {user[0]?.name ? (
                 <div className="flex items-center space-x-4">
-                  <span className="text-gray-700">{user[0].name}</span>
+                  <span className="text-gray-700">{user[0]?.name}</span>
                   <button
-                    onClick={logout}
+                    onClick={handleLogout}
                     className="text-gray-500 hover:text-gray-700"
                   >
                     Logout

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import blogService from '../services/blogService';
+import { Button } from '@/components/ui/button';
 
 export default function EditPost() {
   const { id } = useParams();
@@ -83,19 +84,19 @@ export default function EditPost() {
         </div>
 
         <div className="flex justify-end space-x-4">
-          <button
+          <Button
             type="button"
             onClick={() => navigate('/admin')}
             className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Cancel
-          </button>
-          <button
+          </Button>
+          <Button
             type="submit"
             className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Update Post
-          </button>
+          </Button>
         </div>
       </form>
     </div>

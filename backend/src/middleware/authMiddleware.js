@@ -12,7 +12,7 @@ export const auth = async (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     
     if (!token) {
-      return res.status(401).json({ error: 'No token provided' });
+      throw new Error('No authentication token provided');
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
