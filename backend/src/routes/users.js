@@ -13,11 +13,12 @@ router.get('/profile',auth,  async (req, res) => {
         const { data: user, error } = await supabase
           .from('users')
           .select('*')
-          .eq('id', id)        
+          .eq('id', id)  
+          .single();
         if (error || !user) {
           return res.status(404).json({ error: 'User not found' });
         }        
-        res.json(user);
+        res.json({user,token : req.token});
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

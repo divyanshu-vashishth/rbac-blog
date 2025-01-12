@@ -42,7 +42,39 @@ SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_key
 ```
 
-run the following commands in backend folder
+
+
+
+### Run this sql query on supabase 
+
+```
+CREATE TYPE role AS ENUM ('admin', 'user');
+
+
+<!-- Users table -->
+create table public.users (
+  id uuid default uuid_generate_v4() primary key,
+  email varchar unique not null,
+  password varchar not null,
+  name varchar not null,
+  role role default 'user',
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  verified boolean default false
+);
+
+<!-- Posts table -->
+
+create table public.posts (
+  id uuid default uuid_generate_v4() primary key,
+  title varchar not null,
+  content text not null,
+  author_id uuid references public.users(id),
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+```
+Run the following commands in backend folder
+
 
 ```
 cd backend
@@ -50,6 +82,7 @@ pnpm install
 pnpm seed
 pnpm dev
 ```
+
 
 ### For Admin Dashboard use
 
